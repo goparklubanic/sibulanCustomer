@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   $("#submit").click(function(){
-    $.post("http://ngh.mugeno.org/sibulan/resi/users.php",
+    $.post("https://klubaners.web.id/sibulan/resi/users.php",
         {
            op: "login",
            hp: $("#nmTelp").val(),
@@ -16,7 +16,7 @@ $(document).ready(function(){
             localStorage.setItem("alamat",data.alamat+", "+data.kota);
             window.location="index.html";
           }else{
-            $("#responses").html("Ulangi Lagi .. ");
+            window.location='register.html';
           }
 
         }

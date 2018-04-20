@@ -22,7 +22,7 @@ var app = {
       var kotane = document.getElementById('kota').value;
       var namane = document.getElementById('nama').value;
       $.post(
-        'http://ngh.mugeno.org/sibulan/resi/users.php',{
+        'https://klubaners.web.id/sibulan/resi/users.php',{
           op : 'regme',
           hp : nmTelp,
           ps : passwd,
