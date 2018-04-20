@@ -8,6 +8,7 @@ $(document).ready(function(){
            ps: $("#password").val()
         },function(response){
           var resp=JSON.parse(response);
+          console.log(resp);
           var data = resp.data;
           if(resp.exist == '1'){
             localStorage.setItem("nmTelp",data.nmTelp);
@@ -16,6 +17,8 @@ $(document).ready(function(){
             localStorage.setItem("alamat",data.alamat+", "+data.kota);
             window.location="index.html";
           }else{
+            var resp=JSON.parse(response);
+            console.log(resp);
             window.location='register.html';
           }
 
