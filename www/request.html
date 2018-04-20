@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy"
+			  content="default-src *;
+			  style-src * 'unsafe-inline';
+			  script-src * 'unsafe-inline' 'unsafe-eval'
+							http://*.google.com
+                               http://*.gstatic.com
+                               http://*.googleapis.com
+                               http://*.firebaseio.com
+                               https://*.google.com
+                               https://*.gstatic.com
+                               https://*.googleapis.com
+                               https://*.firebaseio.com;                               ;
+			  img-src * data: 'unsafe-inline';
+			  connect-src * 'unsafe-inline';
+			  frame-src *;" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/request.js"></script>
+        <script type="text/javascript" src="js/pengrapet.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/google-fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="css/theme.css"/>
+        <link rel="stylesheet" type="text/css" href="css/request.css"/>
+        <title>SIBULAN</title>
+    </head>
+    <body class='sibulan' onload="cekPos()">
+	  <div class='app-header'>
+	    <div id='header-logo'>
+	      <img src='img/icon-ori.png' />
+	    </div>
+	    <div id='header-text'>
+	      <p>
+			 <span id='title-1'>Layanan Ambulans Gratis</span>
+		  </p>
+	    </div>
+	  </div>
+      <div class='container-fluid'>
+
+        <div class='app-mainbox'>
+          <div class='info-box'>
+            <div class="info-banner">
+              <p>Pemesanan Ambulan <span id='ambType'></span></p>
+            </div>
+            <div id='response-info' class='info-block'>
+              <div class="req-form">
+                <label>Alamat Penjemputan</label>
+                <input id='pprt' size='6' placeholder="RT"/>
+                <input id='pprw' size='6' placeholder="RW"/>
+                <input id='ppds' size='30' placeholder="Desa"/>
+                <input id="ppkc" size='30' placeholder="Kecamatan" />
+                <input id="ppkt" size="30" placeholder="Kota" />
+                <div id="jemput"></div>
+              </div>
+              <div class="req-form">
+                <label>Alamat Tujuan</label>
+                <textarea class='form-control' rows='3' id='tujuan'></textarea>
+              </div>
+    		    </div>
+          </div>
+          <br />
+          <div class='info-box' id='opsi-darurat'>
+            <div class='info-banner'>
+              <p>Opsi Ambulan Darurat</p>
+            </div>
+              <div class='checkbox'>
+                <label><input type='checkbox' value='1' class='ablScore' />Tempat duduk</label>
+              </div>
+              <div class='checkbox'>
+                <label><input type='checkbox' value='2' class='ablScore' />Tandu</label>
+              </div>
+              <div class='checkbox'>
+                <label><input type='checkbox' value='4' class='ablScore' />Tabung Oksigen</label>
+              </div>
+          </div>
+          <button class='btn btn-primary form-control' id="submit">Kirim Pesanan</button>
+
+        </div> <!-- main-box -->
+        <div class='spacer'>
+          &nbsp;
+        </div>
+      </div> <!-- container -->
+      <div class='app-footer'>
+        &copy;SiBulan 2018
+        </div> <!-- app-footer -->
+      <script>
+
+  			function cekPos(){
+  				var geopsi = {
+  					enableHighAccuracy: true,
+  					timeout : 100000,
+  					maximumAge: 3600000
+  				}
+  				navigator.geolocation.getCurrentPosition(sida,wurung,geopsi);
+  			}
+
+  			function sida(posisi){
+          var titikJemput = posisi.coords.latitude+","+posisi.coords.longitude;
+          documnent.getElementById('jemput').valueL = titikJemput;
+  			}
+
+  			function wurung(rusak){
+  				var ecode = rusak.code;
+  				var mksud = rusak.message;
+
+  				document.getElementById('tujuan').value=ecode;
+  				document.getElementById('tujuan').append('<br />'+mksud);
+  			}
+
+  		</script>
+
+      <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyB5YOCG12t_MviYgerqW4xr8YJAiUEOQwA",
+          authDomain: "sibulan-r711zd.firebaseapp.com",
+          databaseURL: "https://sibulan-r711zd.firebaseio.com",
+          projectId: "sibulan-r711zd",
+          storageBucket: "sibulan-r711zd.appspot.com",
+          messagingSenderId: "871714823353"
+        };
+        firebase.initializeApp(config);
+        var ablRef = firebase.database().ref();
+        $("#submit").click( function(){
+
+          var nmTelp = localStorage.getItem("nmTelp");
+          var namane = localStorage.getItem("namane");
+          var jmp_rt = $("#pprt").val();
+          var jmp_rw = $("#pprw").val();
+          var jmp_ds = $("#ppds").val();
+          var jmp_kc = $("#ppkc").val();
+          var jmp_kt = $("#ppkt").val();
+          var tujuan = $("#tujuan").val();
+          var ablScore = localStorage.getItem('ablScore');
+
+          var data = { 'nmTelp' : nmTelp, "nama":namane,"pprt":jmp_rt,"pprw":jmp_rw,
+                      "ppds":jmp_ds,"ppkc":jmp_kc,"ppkt":jmp_kt, "tujuan":tujuan,
+                      "score":ablScore, 'status': 'unresponded' };
+          console.log(data);
+
+          ablRef.set({
+            ablreq : data
+          });
+
+
+      //    console.log(kupri);
+      //    console.log(kumum);
+
+        });
+      </script>
+    </body>
+</html>

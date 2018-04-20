@@ -1,0 +1,5 @@
+.req-form {display: block; margin: 5px auto; clear: both;}
+.req-form label {display: block; margin: 5px auto; clear: both;}
+.req-form input {
+  padding: 3px; margin: 2px; float: left;
+}
