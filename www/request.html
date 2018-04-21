@@ -33,7 +33,7 @@
     </head>
     <body class='sibulan' onload="cekPos()">
 	  <div class='app-header'>
-	    <div id='header-logo'>
+	    <div id='header-logo' onClick = goHome()>
 	      <img src='img/icon-ori.png' />
 	    </div>
 	    <div id='header-text'>
@@ -57,7 +57,10 @@
                 <input id='ppds' size='30' placeholder="Desa"/>
                 <input id="ppkc" size='30' placeholder="Kecamatan" />
                 <input id="ppkt" size="30" placeholder="Kota" />
-                <div id="jemput"></div>
+                <input id="geol" size="30" placeholder="gps" readonly />
+                <input id="ecode" size="30" placeholder="error code" />
+                <input id="edesc" size="30" placeholder="error desc" />
+
               </div>
               <div class="req-form">
                 <label>Alamat Tujuan</label>
@@ -103,15 +106,15 @@
 
   			function sida(posisi){
           var titikJemput = posisi.coords.latitude+","+posisi.coords.longitude;
-          documnent.getElementById('jemput').valueL = titikJemput;
+          documnent.getElementById('geol').value = titikJemput;
   			}
 
   			function wurung(rusak){
   				var ecode = rusak.code;
   				var mksud = rusak.message;
 
-  				document.getElementById('tujuan').value=ecode;
-  				document.getElementById('tujuan').append('<br />'+mksud);
+  				document.getElementById('ecode').value=ecode;
+  				document.getElementById('edesc').value=mksud;
   			}
 
   		</script>
@@ -149,10 +152,6 @@
           ablRef.set({
             ablreq : data
           });
-
-
-      //    console.log(kupri);
-      //    console.log(kumum);
 
         });
       </script>

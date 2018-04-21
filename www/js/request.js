@@ -24,26 +24,9 @@ $(document).ready( function(){
     }
 
   });
-  /*
-  $("#submit").click( function(){
-    // telp,rt,rw,ds,kc,kt,go,tujuan,tipe,score
-    var nmTelp = localStorage.getItem("nmTelp");
-    var namane = localStorage.getItem("namane");
-    var jmp_rt = $("#pprt").val();
-    var jmp_rw = $("#pprw").val();
-    var jmp_ds = $("#ppds").val();
-    var jmp_kc = $("#ppkc").val();
-    var jmp_kt = $("#ppkt").val();
-    var tujuan = $("#tujuan").val();
-    var ablScore = localStorage.getItem('ablScore');
-
-    var data = {"nmTelp":nmTelp,"nama":namane,"pprt":jmp_rt,"pprw":jmp_rw,
-                "ppds":jmp_ds,"ppkc":jmp_kc,"ppkt":jmp_kt, "tujuan":tujuan,
-                "score":ablScore };
-    console.log(data);
-//    console.log(kupri);
-//    console.log(kumum);
-
-  });
-  */
+  
 });
+
+function goHome(){
+  window.location="index.html";
+}
