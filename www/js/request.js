@@ -10,8 +10,11 @@ $(document).ready(function() {
         document.addEventListener("deviceready", this.onDeviceReady, false);
         console.log('native app');
         getCoord();
+        setOptions();
     } else {
         onDeviceReady();
+        getCoord();
+        setOptions();
         console.log('broser');
     }
 });
@@ -37,7 +40,7 @@ var geoSuccess = function(posisi){
   var titikJemput = posisi.coords.latitude+","+posisi.coords.longitude;
   alert(titikJemput);
   localStorage.setItem('geol',titikJemput);
-  documnent.getElementById('geol').value = localStorage.getItem('geol');
+  // documnent.getElementById('geol').value = localStorage.getItem('geol');
 }
 
 var geoWurung = function(rusak){
@@ -47,31 +50,13 @@ var geoWurung = function(rusak){
   document.getElementById('ecode').value=ecode;
   document.getElementById('edesc').value=mksud;
 }
-/*
-var ambClient = {
-    // Application Constructor
-    initialize: function() {
-        console.log('initialize');
-        this.bindEvents();
-    },
 
-    bindEvents: function() {
-      document.addEventListener('deviceready', this.onDeviceReady, false);
-      console.log('bindEvents');
-    },
+function putLocation(){
+  var pos = localStorage.getItem('geol');
+  document.getElementById('geol').value=pos;
+}
 
-    onDeviceReady: function() {
-        console.log('ready');
-        this.setOptions();
-        this.getCoord();
-    }
-
-    getCoord: function() {
-
-
-    },
-
-    setOptions: function(){
+function  setOptions(){
       localStorage.setItem("ablScore",0);
       var ambType = localStorage.getItem('ambType');
       $("#ambType").html(ambType);
@@ -79,6 +64,3 @@ var ambClient = {
         $("#opsi-darurat").css("display","none");
       }
     }
-};
-
-*/
