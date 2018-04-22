@@ -35,8 +35,9 @@ function getCoord(){
 
 var geoSuccess = function(posisi){
   var titikJemput = posisi.coords.latitude+","+posisi.coords.longitude;
-  //alert(titikJemput);
-  documnent.getElementById('geol').value = titikJemput;
+  alert(titikJemput);
+  localStorage.setItem('geol',titikJemput);
+  documnent.getElementById('geol').value = localStorage.getItem('geol');
 }
 
 var geoWurung = function(rusak){
