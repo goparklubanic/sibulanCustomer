@@ -24,17 +24,20 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/request.js"></script>
+        <!--script type="text/javascript" src="js/request.js"></script-->
         <script type="text/javascript" src="js/pengrapet.js"></script>
         <link rel="stylesheet" type="text/css" href="css/google-fonts.css"/>
         <link rel="stylesheet" type="text/css" href="css/theme.css"/>
         <link rel="stylesheet" type="text/css" href="css/request.css"/>
         <title>SIBULAN</title>
     </head>
-    <body class='sibulan' onload="cekPos()">
+    <body class='sibulan'>
+
 	  <div class='app-header'>
-	    <div id='header-logo' onClick = goHome()>
-	      <img src='img/icon-ori.png' />
+	    <div id='header-logo'>
+        <a href="index.html">
+          <img src='img/icon-ori.png' />
+        </a>
 	    </div>
 	    <div id='header-text'>
 	      <p>
@@ -93,37 +96,8 @@
       <div class='app-footer'>
         &copy;SiBulan 2018
         </div> <!-- app-footer -->
-      <script>
-      
-      document.addEventListener("deviceready", onDeviceReady, false);
-          function onDeviceReady() {
-          console.log("navigator.geolocation works well");
-        }
-
-  			function cekPos(){
-  				var geopsi = {
-  					enableHighAccuracy: true,
-  					timeout : 100000,
-  					maximumAge: 3600000
-  				}
-  				navigator.geolocation.getCurrentPosition(sida,wurung,geopsi);
-  			}
-
-  			function sida(posisi){
-          var titikJemput = posisi.coords.latitude+","+posisi.coords.longitude;
-          documnent.getElementById('geol').value = titikJemput;
-  			}
-
-  			function wurung(rusak){
-  				var ecode = rusak.code;
-  				var mksud = rusak.message;
-
-  				document.getElementById('ecode').value=ecode;
-  				document.getElementById('edesc').value=mksud;
-  			}
-
-  		</script>
-
+        <script type="text/javascript" src="js/request.js"></script>
+      <script>ambClient.initialize()</script>
       <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
       <script>
         // Initialize Firebase
