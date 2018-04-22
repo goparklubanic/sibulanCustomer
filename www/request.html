@@ -119,11 +119,14 @@
           var jmp_kc = $("#ppkc").val();
           var jmp_kt = $("#ppkt").val();
           var tujuan = $("#tujuan").val();
+          var lokasi = localStorage.getItem("geol");
+          var ablType = localStorage.getItem("ambType");
           var ablScore = localStorage.getItem('ablScore');
 
-          var data = { 'nmTelp' : nmTelp, "nama":namane,"pprt":jmp_rt,"pprw":jmp_rw,
-                      "ppds":jmp_ds,"ppkc":jmp_kc,"ppkt":jmp_kt, "tujuan":tujuan,
-                      "score":ablScore, 'status': 'unresponded' };
+          var data = { 'nmTelp' : nmTelp, "nama":namane,"pprt":jmp_rt,
+                       "pprw":jmp_rw,"ppds":jmp_ds,"ppkc":jmp_kc,"ppkt":jmp_kt,
+                       "tujuan":tujuan, "geol" : lokasi, "tipe": ablType,
+                       "score":ablScore, 'status': 'unresponded' };
           console.log(data);
 
           ablRef.set({
