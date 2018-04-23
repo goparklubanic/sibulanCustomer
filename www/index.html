@@ -63,9 +63,9 @@
 		  <div id='response-info' class='info-box'>
 			<div class='info-banner'>Info Tanggap</div>
 		    <div id='response-info' class='info-block'>
-		      <p><label class='info-label'>No. Polisi</label>:</p>
-		      <p><label class='info-label'>Pengemudi</label>:</p>
-		      <p><label class='info-label'>No. Telp</label>:</p>
+		      <p><label class='info-label'>No. Polisi</label>:<span id='mobil'></span></p>
+		      <p><label class='info-label'>Pengemudi</label>:<span id='sopir'></span></p>
+		      <p><label class='info-label'>No. Telp</label>:<span id='spTelp'></span></p>
 		    </div>
 		  </div>
 
@@ -77,5 +77,38 @@
       <div class='app-footer'>
         &copy;SiBulan 2018
         </div> <!-- app-footer -->
+        <!-- firebase scripts -->
+        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyB5YOCG12t_MviYgerqW4xr8YJAiUEOQwA",
+            authDomain: "sibulan-r711zd.firebaseapp.com",
+            databaseURL: "https://sibulan-r711zd.firebaseio.com",
+            projectId: "sibulan-r711zd",
+            storageBucket: "sibulan-r711zd.appspot.com",
+            messagingSenderId: "871714823353"
+          };
+
+          firebase.initializeApp(config);
+          var nmTelp = localStorage.getItem('nmTelp')
+          var ablRef = firebase.database().ref(nmTelp);
+          
+          ablRef.set({
+             'nopol'  :'',
+             'nmTelp' :'',
+             'driver' :'',
+             'mobil'  :''
+          });
+
+          ablRef.on('value', function(respon){
+            console.log(respon.val());
+            document.getElementById('mobil').innerHTML=respon.val().nopol +" "+respon.val().mobil ;
+            document.getElementById('sopir').innerHTML=respon.val().driver;
+            document.getElementById('spTelp').innerHTML=respon.val().nmTelp;
+          });
+
+        </script>
+        <!-- firebase scripts -->
     </body>
 </html>
