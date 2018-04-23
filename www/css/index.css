@@ -1,8 +1,7 @@
 .info-block p {margin: 0; padding: 1px;}
 .info-label {display: inline-block; width: 80px; color: #800000;}
 .order-btn{
-	display: block;  width: 100%; margin: 10px auto;
-	padding: 20px 10px; background: #D2161E; color: #F0F0F0; 
+	display: inline;  width: 48%; margin: 10px auto;
+	padding: 10px 10px; background: #D2161E; color: #F0F0F0;
 	font-size: 14pt; border: 1px solid #0F0F0F; border-radius: 5px;
 }
-

@@ -19,6 +19,8 @@ $(document).ready(function() {
     }
 });
 
+
+
 function onDeviceReady() {
     // do everything here.
     console.log('onDeviceReady');
@@ -58,10 +60,10 @@ function putLocation(){
 }
 
 function  setOptions(){
-      localStorage.setItem("ablScore",0);
-      var ambType = localStorage.getItem('ambType');
-      $("#ambType").html(ambType);
-      if(ambType == 'Jenazah') {
-        $("#opsi-darurat").css("display","none");
-      }
+    localStorage.setItem("ablScore",0);
+    var ambType = localStorage.getItem('ambType');
+    $("#ambType").html(ambType);
+    if(ambType == 'Jenazah') {
+      $("#opsi-darurat").css("display","none");
     }
+}

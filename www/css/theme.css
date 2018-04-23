@@ -30,10 +30,10 @@ body.sibulan {
  }
 
  .app-footer {
-	clear:both; bottom: 2px; height: 40px; position: fixed; width: 100%;
+	clear:both; bottom: 2px; height: 40px; position: static; width: 100%;
 	padding: 10px; margin: 0;
 	text-align: center; font-size: 10pt;
 	background: #800000; color:#EEEEEE;
  }
-
- .spacer {height: 70px;}
+.raketok {display:none;}
+.spacer {height: 70px;}
