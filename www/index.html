@@ -76,7 +76,7 @@
       </div> <!-- container -->
       <div class='app-footer'>
         &copy;SiBulan 2018
-        </div> <!-- app-footer -->
+      </div> <!-- app-footer -->
         <!-- firebase scripts -->
         <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
         <script>
@@ -93,7 +93,7 @@
           firebase.initializeApp(config);
           var nmTelp = localStorage.getItem('nmTelp')
           var ablRef = firebase.database().ref(nmTelp);
-          
+
           ablRef.set({
              'nopol'  :'',
              'nmTelp' :'',
