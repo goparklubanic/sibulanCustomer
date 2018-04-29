@@ -112,6 +112,7 @@
         };
         firebase.initializeApp(config);
         var ablRef = firebase.database().ref();
+
         $("#submit").click( function(){
 
           var nmTelp = localStorage.getItem("nmTelp");
@@ -134,6 +135,16 @@
 
           ablRef.set({
             ablreq : data
+          });
+
+          var nmTelp = localStorage.getItem('nmTelp');
+          var ablReq = firebase.database().ref(nmTelp);
+          console.log(nmTelp);
+          ablReq.set({
+             'nopol'  :'',
+             'nmTelp' :'',
+             'driver' :'',
+             'mobil'  :''
           });
 
           window.location='index.html';
