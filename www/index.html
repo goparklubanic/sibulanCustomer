@@ -94,21 +94,22 @@
           var nmTelp = localStorage.getItem('nmTelp')
           var ablRef = firebase.database().ref(nmTelp);
 
-          /*
-          ablRef.set({
-             'nopol'  :'',
-             'nmTelp' :'',
-             'driver' :'',
-             'mobil'  :''
-          });
-          */
+
           ablRef.on('value', function(respon){
             console.log(respon.val());
-            /*
-            document.getElementById('mobil').innerHTML=respon.val().nopol +" "+respon.val().mobil ;
-            document.getElementById('sopir').innerHTML=respon.val().driver;
-            document.getElementById('spTelp').innerHTML=respon.val().nmTelp;
-            */
+            if(respon.val() == null || reson.val() == 'unidentified' ){
+              ablRef.set({
+                 'nopol'  :'',
+                 'nmTelp' :'',
+                 'driver' :'',
+                 'mobil'  :''
+              });
+            }else{
+              document.getElementById('mobil').innerHTML=respon.val().nopol +" "+respon.val().mobil ;
+              document.getElementById('sopir').innerHTML=respon.val().driver;
+              document.getElementById('spTelp').innerHTML=respon.val().nmTelp;
+            }
+
           });
 
 
