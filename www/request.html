@@ -57,6 +57,10 @@
             </div>
             <div id='response-info' class='info-block'>
               <div class="req-form">
+                <div class='form-group'>
+                  <label>Nomor Tiket</label>
+                  <input type='text' class='form-control' id='ticketId' readonly  />
+                </div>
                 <label>Alamat Penjemputan</label>
                 <input type='number' id='pprt' size='6' placeholder="RT"/>
                 <input type='number' id='pprw' size='6' placeholder="RW"/>
@@ -89,7 +93,7 @@
                 <label><input type='checkbox' value='4' class='ablScore' />Tabung Oksigen</label>
               </div>
           </div>
-          <button class='btn btn-primary form-control' id="submit">Kirim Pesanan</button>
+          <button class='btn btn-success form-control' id="submit">Pesan !</button>
 
         </div> <!-- main-box -->
         <div class='spacer'>
@@ -117,6 +121,7 @@
 
           var nmTelp = localStorage.getItem("nmTelp");
           var namane = localStorage.getItem("namane");
+          var ticket = $("#ticketId").val();
           var jmp_rt = $("#pprt").val();
           var jmp_rw = $("#pprw").val();
           var jmp_ds = $("#ppds").val();
@@ -127,16 +132,16 @@
           var ablType = localStorage.getItem("ambType");
           var ablScore = localStorage.getItem('ablScore');
 
-          var data = { 'nmTelp' : nmTelp, "nama":namane,"pprt":jmp_rt,
-                       "pprw":jmp_rw,"ppds":jmp_ds,"ppkc":jmp_kc,"ppkt":jmp_kt,
-                       "tujuan":tujuan, "geol" : lokasi, "tipe": ablType,
-                       "score":ablScore, 'status': 'unresponded' };
+          var data = { "ticketId" : ticket, 'nmTelp' : nmTelp, "nama":namane,
+                       "pprt":jmp_rt,"pprw":jmp_rw,"ppds":jmp_ds,"ppkc":jmp_kc,
+                       "ppkt":jmp_kt,"tujuan":tujuan, "geol" : lokasi,
+                       "tipe": ablType,"score":ablScore, 'status': 'unresponded' };
           console.log(data);
 
           ablRef.set({
             ablreq : data
           });
-          
+
           window.location='index.html';
 
         });

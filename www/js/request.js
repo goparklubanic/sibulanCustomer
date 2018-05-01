@@ -15,8 +15,33 @@ $(document).ready(function() {
         onDeviceReady();
         getCoord();
         setOptions();
-        console.log('broser');
+        console.log('browser');
     }
+
+    localStorage.setItem('ablScore',0);
+
+    $.post('http://ngh.mugeno.org/sibulan/resi/users.php',{
+      op : 'ticket'
+    },function(tiket){
+      $('#ticketId').val(tiket);
+    });
+
+    $(".ablScore").click( function(){
+      var ablScore = localStorage.getItem('ablScore');
+      var oldScore = parseInt(ablScore);
+
+      var index = $( ".ablScore" ).index( this );
+      var score = $( ".ablScore" ).eq(index).val();
+
+      if($( ".ablScore").eq(index).is(':checked') ){
+        var newScore = oldScore + parseInt(score);
+      }else{
+        var newScore = oldScore - parseInt(score);
+      }
+
+      console.log('skor',newScore);
+      localStorage.setItem('ablScore',newScore);
+    });
 });
 
 
