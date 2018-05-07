@@ -24,10 +24,23 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/armadas.js"></script>
         <link rel="stylesheet" type="text/css" href="css/google-fonts.css"/>
         <link rel="stylesheet" type="text/css" href="css/theme.css"/>
         <title>SIBULAN</title>
+        <style>
+        .nmLambung{
+          float: left; width: 70px; height: 70px;
+          background: maroon; color: #EEE; padding: 20px 5px;
+          font-size: 36px; margin-right: 10px;
+        }
+        .infoArmada {
+
+        } .infoArmada p {margin:0; padding: 0;}
+        p.organisasi { font-weight: bold; font-size: 18px;}
+        p.alamat {font-size: 12px; font-family: cursive;}
+        p.kontak {font-family: monospace; font-size: 12px;}
+        </style>
     </head>
     <body class='sibulan'>
 	  <div class='app-header'>
@@ -44,9 +57,32 @@
 
         <div class='app-mainbox'>
           <div id="user-info" class='info-box'>
-    		    <div class='info-banner'>banner</div>
-    		    <div class='info-block'>
-    		      konten
+    		    <div class='info-banner'>Daftar Armada</div>
+    		    <div class='info-block list-group' id="dftArmada">
+    		      <li class='list-group-item'>
+                <div class='nmLambung'>999</div>
+                <div class='infoArmada'>
+                    <p class='organisasi'>yayasan xyz</p>
+                    <p class='alamat'>Jl. Kirana No. 99 Banjoemas Raja</p>
+                    <p class='kontak'>012345678901</p>
+                </div>
+              </li>
+              <li class='list-group-item'>
+                <div class='nmLambung'>999</div>
+                <div class='infoArmada'>
+                    <p class='organisasi'>yayasan xyz</p>
+                    <p class='alamat'>Jl. Kirana No. 99 Banjoemas Raja</p>
+                    <p class='kontak'>012345678901</p>
+                </div>
+              </li>
+              <li class='list-group-item'>
+                <div class='nmLambung'>999</div>
+                <div class='infoArmada'>
+                    <p class='organisasi'>yayasan xyz</p>
+                    <p class='alamat'>Jl. Kirana No. 99 Banjoemas Raja</p>
+                    <p class='kontak'>012345678901</p>
+                </div>
+              </li>
     		    </div>
     		  </div>
         </div> <!-- main-box -->
