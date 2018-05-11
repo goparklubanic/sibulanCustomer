@@ -93,5 +93,17 @@
       <div class='app-footer'>
         &copy;SiBulan 2018
         </div> <!-- app-footer -->
+        <script>
+          // back button handler
+          document.addEventListener("backbutton", onBackKeyDown, false);
+
+          function onBackKeyDown() {
+            navigator.Backbutton.goBack(function() {
+              console.log('success')
+            }, function() {
+              console.log('fail')
+            });
+          }
+        </script>
     </body>
 </html>

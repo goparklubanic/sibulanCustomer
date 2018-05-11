@@ -32,9 +32,25 @@
         <style>
         #pprt,#pprw{ width: 50px; }
         </style>
+        <script>
+          function bersiap(){
+             document.addEventListener("deviceready", onDeviceReady, false);
+          }
+          function onDeviceReady() {
+
+            // Register the event listener
+            document.addEventListener("backbutton", onBackKeyDown, false);
+          }
+
+          // Handle the back button
+          //
+          function onBackKeyDown() {
+            window.location="request.html";
+          }
+        </script>
         <title>SIBULAN</title>
     </head>
-    <body class='sibulan'>
+    <body class='sibulan' onLoad=bersiap()>
 
 	  <div class='app-header'>
 	    <div id='header-logo'>
@@ -61,12 +77,13 @@
                   <label>Nomor Tiket</label>
                   <input type='text' class='form-control' id='ticketId' readonly  />
                 </div>
-                <label>Alamat Penjemputan</label>
-                <input type='number' id='pprt' size='6' placeholder="RT"/>
-                <input type='number' id='pprw' size='6' placeholder="RW"/>
-                <input id='ppds' size='30' placeholder="Desa"/>
-                <input id="ppkc" size='30' placeholder="Kecamatan" />
-                <input id="ppkt" size="30" placeholder="Kota" />
+                <div>
+                  <label>Tanggal Keberangkatan</label>
+                  <input type='date' class='form-control' id='tripDate' />
+
+                </div>
+                <label>Titik Penjemputan</label>
+                <textarea class='form-control' rows='3' id='titikJemput'></textarea>
                 <input class='raketok' id="geol" size="30" placeholder="gps" readonly />
                 <input class='raketok' id="ecode" size="30" placeholder="error code" readonly />
                 <input class='raketok' id="edesc" size="30" placeholder="error desc" readonly />
@@ -122,20 +139,17 @@
           var nmTelp = localStorage.getItem("nmTelp");
           var namane = localStorage.getItem("namane");
           var ticket = $("#ticketId").val();
-          var jmp_rt = $("#pprt").val();
-          var jmp_rw = $("#pprw").val();
-          var jmp_ds = $("#ppds").val();
-          var jmp_kc = $("#ppkc").val();
-          var jmp_kt = $("#ppkt").val();
+          var tanggal= $("#tripDate").val();
+          var jemput = $("#titikJemput").val();
           var tujuan = $("#tujuan").val();
           var lokasi = localStorage.getItem("geol");
           var ablType = localStorage.getItem("ambType");
           var ablScore = localStorage.getItem('ablScore');
 
           var data = { "ticketId" : ticket, 'nmTelp' : nmTelp, "nama":namane,
-                       "pprt":jmp_rt,"pprw":jmp_rw,"ppds":jmp_ds,"ppkc":jmp_kc,
-                       "ppkt":jmp_kt,"tujuan":tujuan, "geol" : lokasi,
-                       "tipe": ablType,"score":ablScore, 'status': 'unresponded' };
+                       "tgBeerangkat": tanggal, "jemput":jemput,"tujuan":tujuan,
+                       "geol" : lokasi, "tipe": ablType,"score":ablScore,
+                       'status': 'unresponded' };
           console.log(data);
 
           ablRef.set({

@@ -24,12 +24,27 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="css/google-fonts.css"/>
         <link rel="stylesheet" type="text/css" href="css/theme.css"/>
         <title>SIBULAN</title>
+        <script>
+          function bersiap(){
+             document.addEventListener("deviceready", onDeviceReady, false);
+          }
+          function onDeviceReady() {
+
+            // Register the event listener
+            document.addEventListener("backbutton", onBackKeyDown, false);
+          }
+
+          // Handle the back button
+          //
+          function onBackKeyDown() {
+            window.location="index.html";
+          }
+        </script>
     </head>
-    <body class='sibulan'>
+    <body class='sibulan' onLoad=bersiap()>
 	  <div class='app-header'>
 	    <div id='header-logo'>
 	      <a href='index.html'><img src='img/icon-ori.png' /></a>
