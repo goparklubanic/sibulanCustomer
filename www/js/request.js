@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     localStorage.setItem('ablScore',0);
 
-    $.post('https://klubaners.web.id/sibulan/resi/users.php',{
+    $.post('https://sibulan.id/resi/users.php',{
       op : 'ticket'
     },function(tiket){
       $('#ticketId').val(tiket);

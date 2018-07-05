@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   $("#submit").click(function(){
-    $.post("https://klubaners.web.id/sibulan/resi/users.php",
+    $.post("https://sibulan.id/resi/users.php",
         {
            op: "login",
            hp: $("#nmTelp").val(),

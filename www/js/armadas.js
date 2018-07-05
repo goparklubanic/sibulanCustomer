@@ -16,7 +16,7 @@ $(document).ready( function(){
       console.log('browser');
   }
 
-  $.post('https://klubaners.web.id/sibulan/resi/users.php',{
+  $.post('https://sibulan.id/resi/users.php',{
     'op' : 'armadas'
   }, function(armadas){
     var armadas = JSON.parse(armadas);
